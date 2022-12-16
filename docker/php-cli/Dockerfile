@@ -1,7 +1,6 @@
-FROM php:8.1.5-cli-alpine3.15
+FROM php:8.2-cli-alpine3.16
 
 ENV TZ=Europe/Minsk
-ENV PHP_MEMORY_LIMIT=512M
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/1.5.51/install-php-extensions /usr/local/bin/
 
@@ -10,9 +9,7 @@ RUN chmod +x /usr/local/bin/install-php-extensions
 RUN apk add --update --no-cache \
     tzdata \
     bash \
-    curl \
     zip \
-    git \
     shadow \
     ca-certificates \
     && groupmod -o -g 1000 www-data && usermod -o -u 1000 -g www-data www-data \
