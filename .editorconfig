@@ -1,0 +1,23 @@
+root = true
+
+[*]
+charset = utf-8
+indent_size = 4
+indent_style = space
+end_of_line = lf
+
+[*.php]
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_line_length = 120
+ij_php_lower_case_boolean_const = true
+ij_php_lower_case_keywords = true
+ij_php_lower_case_null_const = true
+ij_php_upper_case_boolean_const = false
+ij_php_upper_case_null_const = false
+ij_php_import_sorting = alphabetic
+ij_php_concat_spaces = true
+
+[*.{yml,yaml}]
+indent_size = 2
+insert_final_newline = true

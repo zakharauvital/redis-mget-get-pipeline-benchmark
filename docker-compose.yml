@@ -1,0 +1,41 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php-cli/Dockerfile
+      args:
+        UID: ${UID:-1000}
+        GID: ${GID:-1000}
+    container_name: benchmark_app
+    environment:
+      PHP_IDE_CONFIG: serverName=app
+    sysctls:
+      net.core.somaxconn: 65536
+      net.ipv4.tcp_syncookies: 0
+      net.ipv4.tcp_fin_timeout: 10
+      net.ipv4.tcp_synack_retries: 1
+      net.ipv4.tcp_keepalive_time: 60
+      net.ipv4.ip_local_port_range: "1200 65000"
+    extra_hosts:
+      - "docker.host.internal:host-gateway"
+    volumes:
+      - ./app:/var/www/html
+    networks:
+      - backend
+    depends_on:
+      - redis
+
+  redis:
+    build:
+      context: docker/redis
+    container_name: benchmark_redis
+    volumes:
+      - ./docker/redis/data:/data
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: benchmark_backend

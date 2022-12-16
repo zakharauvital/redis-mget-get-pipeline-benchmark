@@ -1,0 +1,9 @@
+**/.dockerignore
+**/.gitignore
+**/.DS_Store
+**/Dockerfile
+**/build.sh
+/docker-compose.yml
+/README.md
+/.idea
+/.git

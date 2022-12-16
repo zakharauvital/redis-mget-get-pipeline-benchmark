@@ -1,0 +1,4 @@
+.idea
+.env
+auth.json
+docker/config.json
