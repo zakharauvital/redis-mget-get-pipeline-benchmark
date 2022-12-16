@@ -17,7 +17,7 @@ You will be able to see the following results:
 Connection to Redis is successfully
 Redis' keys is generating...
 Generation is successfully
-Time get x60: 3.8268566131592 ms
-Time get x60 with pipeline : 0.18596649169922 ms
-Time mget x1: 0.14400482177734 ms
+Time get x60: 4.133939743042 ms
+Time get x60 with pipeline : 0.12397766113281 ms
+Time mget x1: 0.092983245849609 ms
 ```

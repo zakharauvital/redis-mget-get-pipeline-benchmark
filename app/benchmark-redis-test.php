@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-const KEYS_COUNT = 2000000;
+const KEYS_COUNT = 1000000;
 
 const PAYLOAD = '{"type":"Product","id":493842,"attributes":{"pickup_point":{"available":true},"courier":{"available":true}}}';
 

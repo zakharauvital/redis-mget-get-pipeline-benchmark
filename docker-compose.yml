@@ -31,6 +31,13 @@ services:
     build:
       context: docker/redis
     container_name: benchmark_redis
+    sysctls:
+      net.core.somaxconn: 65536
+      net.ipv4.tcp_syncookies: 0
+      net.ipv4.tcp_fin_timeout: 10
+      net.ipv4.tcp_synack_retries: 1
+      net.ipv4.tcp_keepalive_time: 60
+      net.ipv4.ip_local_port_range: "1200 65000"
     volumes:
       - ./docker/redis/data:/data
     networks:
