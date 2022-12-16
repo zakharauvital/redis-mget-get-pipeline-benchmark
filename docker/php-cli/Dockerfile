@@ -1,8 +1,9 @@
 FROM php:8.1.5-cli-alpine3.15
 
 ENV TZ=Europe/Minsk
+ENV PHP_MEMORY_LIMIT=512M
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/1.5.37/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/1.5.51/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions
 
@@ -19,8 +20,6 @@ RUN apk add --update --no-cache \
 ;
 
 RUN install-php-extensions \
-    tokenizer \
-    curl \
     mbstring \
     redis-5.3.6 \
 ;
@@ -28,6 +27,8 @@ RUN install-php-extensions \
 RUN echo "date.timezone=$TZ" > "$PHP_INI_DIR/conf.d/date-time-zone.ini" && \
     mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
 ;
+
+COPY docker/php-cli/config/php.ini /usr/local/etc/php/php.ini
 
 COPY --chown=www-data:www-data app /var/www/html/
 
