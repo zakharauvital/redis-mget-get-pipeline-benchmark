@@ -1,9 +1,11 @@
-# redis-mget-get-pipeline-benchmark
-Redis MGET VS GET VS GET + pipeline benchmark
+# Redis MGET VS GET VS GET + pipeline benchmark
 
-This benchmark shows us how **MGET** is faster than **GET** and **GET** that is wrapped with Redis' pipeline technique.
+This benchmark shows us how faster **MGET** is compared to **GET** and **GET** 
+that is wrapped with Redis' pipeline technique.
 
-### What does this benchmark?
+
+### What does this benchmark do?
+
 - [benchmark-redis-test.php](app%2Fbenchmark-redis-test.php) creates 1 000 000 keys in Redis
   - invokes one MGET call with 60 keys
   - invokes 60 times **GET** with 1 key
